@@ -27,16 +27,16 @@ insertionSort(numbers: [31, 41, 59, 26, 41, 58])
 
 // Merge Sort
 func merge(numbers: inout[Int], left: Int, mid: Int, right: Int) {
-    let subArr1 = mid - left
-    let subArr2 = right - mid - 1
+    let subArr1 = mid - left + 1
+    let subArr2 = right - mid
     var leftArr: [Int] = []
     var rightArr: [Int] = []
     
-    for i in 0...subArr1 {
+    for i in 0...subArr1 - 1 {
         leftArr.append(numbers[left + i])
     }
     
-    for j in 0...subArr2 {
+    for j in 0...subArr2 - 1 {
         rightArr.append(numbers[mid + 1 + j])
     }
     
@@ -86,6 +86,6 @@ func sort(numbers: inout[Int], begin: Int, end: Int)
 }
 
 
-var numbersToSort = [12, 11, 13, 5, 6 ,7]
+var numbersToSort = [12, 11]
 sort(numbers: &numbersToSort, begin: 0, end: numbersToSort.count - 1)
 
