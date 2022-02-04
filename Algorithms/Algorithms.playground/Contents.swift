@@ -3,27 +3,23 @@ import UIKit
 var greeting = "Hello, playground"
 
 // Insertion sort
-let  numbers: [Int] = [2, 1, 6, 4]
+var  sortWithInsertionSort: [Int] = [2, 1, 6, 4]
 
-func insertionSort (numbers: [Int]) -> [Int]{
-    // newNumbersll parameters passed into a Swift function are constants
-    // We use a new variable newNumbers
-    var newNumbers = numbers
-    for index in 1...(newNumbers.count - 1) {
-        let key = newNumbers[index]
+func insertionSort (numbers: inout[Int]){
+    for index in 1...(numbers.count - 1) {
+        let key = numbers[index]
         var prevIndex = index - 1
-        while prevIndex > -1 && newNumbers[prevIndex] > key {
-            newNumbers[prevIndex + 1] =  newNumbers[prevIndex]
+        while prevIndex > -1 && numbers[prevIndex] > key {
+            numbers[prevIndex + 1] = numbers[prevIndex]
             prevIndex = prevIndex - 1
         }
-        newNumbers[prevIndex + 1] = key
+        numbers[prevIndex + 1] = key
     }
-    return newNumbers
 }
 
-insertionSort(numbers: numbers)
-insertionSort(numbers: [31, 41, 59, 26, 41, 58])
-
+print("Array to Sort:  \(sortWithInsertionSort)")
+insertionSort(numbers: &sortWithInsertionSort)
+print("Array Sorted: \(sortWithInsertionSort) !")
 
 // Merge Sort
 func merge(numbers: inout[Int], left: Int, mid: Int, right: Int) {
@@ -86,6 +82,7 @@ func sort(numbers: inout[Int], begin: Int, end: Int)
 }
 
 
-var numbersToSort = [12, 11]
+var numbersToSort = [12, 11, 34, 1, 3, 2]
 sort(numbers: &numbersToSort, begin: 0, end: numbersToSort.count - 1)
+// print(numbersToSort)
 
